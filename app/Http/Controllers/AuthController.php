@@ -25,10 +25,36 @@ class AuthController
             ]
         );
 
-        //Chcar se o usuário já existe
-        $user = User::find()
+        $email = $request->email;
+        $password = $request->password;
 
+
+        //Chcar se o usuário já existe
+        $user = User::where('email', $email)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('loginError', 'Email ou senha inválidos.');
+        }
+
+        //Checar se a senha está correta
+
+        if (!password_verify($password, $user->password)) {
+            return redirect()->back()->with('loginError', 'Email ou senha inválidos.');
+        }
+
+        //Atualizar último login
+        $user->last_login = date('Y-m-d H:i:s');
+        $user->save();
+
+        // Setando login na sessão
+        session([
+            'user' => [
+                'id' => $user->id,
+                'username' => $user->name
+            ]
+        ]);
+
+        return redirect()->route('home');
 
     }
-
 }
