@@ -8,8 +8,8 @@
 
         <ul class="nav nav-pills bg-blue">
             <li class="nav-item me-3"><i
-                class="fa-solid fa-user-circle fa-lg text-secondary me-3 ms-3"></i><span class=" fs-6 btn">Nome do Usuário</span></li>
-            <li class="nav-item"><a href="#" class="btn btn-outline-secondary px-3" aria-current="page">logout <i
+                class="fa-solid fa-user-circle fa-lg text-secondary me-3 ms-3"></i><span class=" fs-6 btn">{{ session('user.username')}}</span></li>
+            <li class="nav-item"><a href="{{ route('logout') }}" class="btn btn-outline-secondary px-3" aria-current="page">logout <i
                         class="fa-solid fa-arrow-right-from-bracket ms-2"></i></a></li>
         </ul>
     </header>

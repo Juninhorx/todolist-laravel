@@ -57,4 +57,9 @@ class AuthController
         return redirect()->route('home');
 
     }
+
+    public function logout() {
+        session()->forget('user');
+        return redirect()->route('login');
+    }
 }

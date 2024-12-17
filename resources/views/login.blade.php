@@ -15,7 +15,7 @@
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                 <label for="floatingPassword">Senha</label>
             </div>
-            @if (session('loginError'))
+            @if(session('loginError'))
                 <div class="alert alert-danger text-center">
                     {{ session('loginError') }}
                 </div>
